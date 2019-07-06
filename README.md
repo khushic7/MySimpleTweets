@@ -51,7 +51,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+Required Stories:
 <img src='walkthrough1_required.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Some Stretch Stories:
 <img src='walkthrough_stretch_finalrecording1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
