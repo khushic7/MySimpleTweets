@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -16,18 +17,35 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class ComposeActivity extends AppCompatActivity {
 
     private TwitterClient client;
 
+    @BindView(R.id.tweetMessage) EditText editText;
+    @BindView(R.id.ivCancel) ImageView cancelBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
 
-        EditText editText = findViewById(R.id.tweetMessage);
+        // Get user name, handle, photo
+//        client.getUserCreds(new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                try {
+//                    User myUser = User.fromJSON(response);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+
+        ButterKnife.bind(this);
         final TextView charsTextView = findViewById(R.id.tweetCharsLeft);
 
         final TextWatcher txWatcher = new TextWatcher() {
@@ -67,6 +85,16 @@ public class ComposeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onCancelBtnClick(View v) {
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ComposeActivity.this, TimelineActivity.class));
+            }
+        });
+
     }
 
 }

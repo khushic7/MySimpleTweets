@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TwitterDetailsActivity">
+
+    <TextView
+        android:id="@+id/tvTweeterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Tweeter Name"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tvTweeterHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweeter Handle"
+        android:layout_below="@+id/tvTweeterName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tvTweetContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet Content"
+        android:layout_below="@+id/tvTweeterHandle"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/ivEmbeddedContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTweetContent"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        app:srcCompat="@android:color/black" />
+
+
+</RelativeLayout>

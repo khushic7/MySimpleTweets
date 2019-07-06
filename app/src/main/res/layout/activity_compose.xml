@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ComposeActivity">
 
+    <ImageView
+        android:id="@+id/ivSelfProfileImage"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/black" />
+
     <EditText
         android:id="@+id/tweetMessage"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:maxLength="280">
-    </EditText>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tweetBtn"
+        android:layout_below="@+id/ivProfileImage"
+        android:hint="@string/placeholder"
+        android:maxLength="280"
+        app:layout_constraintBottom_toTopOf="@+id/tweetBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSelfProfileImage"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/tweetBtn"
@@ -20,12 +38,50 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:onClick="onTweetBtnClick"
-        android:text="Tweet"/>
+        android:text="Tweet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tweetCharsLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/tweetMessage" />
-</RelativeLayout>
+        android:layout_below="@+id/tweetMessage"
+        android:layout_toStartOf="@+id/tweetBtn"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="@id/tweetBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tweetBtn" />
+
+    <TextView
+        android:id="@+id/tvSelfName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:text="TextView"
+        app:layout_constraintTop_toTopOf="@id/ivSelfProfileImage"
+        app:layout_constraintEnd_toStartOf="@+id/ivSelfProfileImage"
+        app:layout_constraintBottom_toTopOf="@id/tvSelfHandle" />
+
+    <TextView
+        android:id="@+id/tvSelfHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/ivSelfProfileImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelfName" />
+
+    <ImageView
+        android:id="@+id/ivCancel"
+        android:layout_width="44dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onCancelBtnClick"
+        app:srcCompat="@drawable/ic_vector_close" />
+
+</android.support.constraint.ConstraintLayout>
