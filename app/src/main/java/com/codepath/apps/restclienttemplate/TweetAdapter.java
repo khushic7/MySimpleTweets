@@ -25,12 +25,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     private List<Tweet> mTweets;
     Context context;
 
-    // pass in the Tweets array in the constructor
+    // Pass in the Tweets array in the constructor
     public TweetAdapter(List<Tweet> tweets) {
         mTweets = tweets;
     }
-    // for each row, inflate the layout and cache references into ViewHolder
 
+    // For each row, inflate the layout and cache references into ViewHolder
     @Override
     public TweetAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
@@ -41,14 +41,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         return viewHolder;
     }
 
-    // bind the values based on the position of the element
-
+    // Bind the values based on the position of the element
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // get the data according to position
+        // Get the data according to position
         Tweet tweet = mTweets.get(position);
 
-        // populate the views according to this data
+        // Populate the views according to this data
         holder.tvUsername.setText(tweet.user.name);
         holder.tvBody.setText(tweet.body);
         holder.tvUsernameHandle.setText("@" + tweet.user.screenName);
@@ -63,8 +62,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     public int getItemCount() {
         return mTweets.size();
     }
-
-    // Create ViewHolder class
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView ivProfileImage;
