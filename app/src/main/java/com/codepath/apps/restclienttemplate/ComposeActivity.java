@@ -23,7 +23,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class ComposeActivity extends AppCompatActivity {
 
-    private TwitterClient client;
+    private TwitterClient client; // Reference to Twitter Client
 
     @BindView(R.id.tweetMessage) EditText editText;
     @BindView(R.id.ivCancel) ImageView cancelBtn;
@@ -34,18 +34,19 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
 
         // Get user name, handle, photo
-//        client.getUserCreds(new JsonHttpResponseHandler() {
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                try {
-//                    User myUser = User.fromJSON(response);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+        // client.getUserCreds(new JsonHttpResponseHandler() {
+        //    @Override
+        //    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+        //        try {
+        //            User myUser = User.fromJSON(response);
+        //        } catch (JSONException e) {
+        //            e.printStackTrace();
+        //        }
+        //    }
+        // });
 
         ButterKnife.bind(this);
+
         final TextView charsTextView = findViewById(R.id.tweetCharsLeft);
 
         final TextWatcher txWatcher = new TextWatcher() {
@@ -63,7 +64,6 @@ public class ComposeActivity extends AppCompatActivity {
         };
 
         editText.addTextChangedListener(txWatcher);
-
     }
 
     public void onTweetBtnClick(View v) {
