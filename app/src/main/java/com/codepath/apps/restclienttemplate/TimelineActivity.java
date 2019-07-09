@@ -61,23 +61,23 @@ public class TimelineActivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        // init the arraylist (data source)
+        // Init the arraylist (data source)
         tweets = new ArrayList<>();
-        // construct the adapter from this datasource
+
+        // Construct the adapter from this datasource
         tweetAdapter = new TweetAdapter(tweets);
+
         // RecyclerView setup (layout manager, use adapter)
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
-        // set the adapter
+
+        // Set the adapter
         rvTweets.setAdapter(tweetAdapter);
+
+        // Populate timeline
         populateTimeline();
 
+        // Adds dividing line between tweets
         rvTweets.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-
-        // ActionBar actionBar = getSupportActionBar();
-//        getSupportActionBar().setTitle("Home");
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        getSupportActionBar().setLogo(R.drawable.ic_launcher_twitter);
-//        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
     }
 
@@ -85,14 +85,13 @@ public class TimelineActivity extends AppCompatActivity {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                // Log.d("TwitterClient", response.toString());
-                // iterate through the JSON array
-                // for each entry, deserialize the JSON object
 
+                // Iterate through the JSON array
+                // for each entry, deserialize the JSON object
                 for (int i = 0; i < response.length(); i++) {
-                    // convert each object to a Tweet model
-                    // add that Tweet model to our data source
-                    // notify the adapter that we've added an item
+                    // Convert each object to a Tweet model
+                    // Add that Tweet model to our data source
+                    // Notify the adapter that we've added an item
                     try {
                         Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
                         tweets.add(tweet);
@@ -137,9 +136,6 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     public void onComposeAction(MenuItem menuItem) {
-        // handle click here
-
-        // first parameter is the context, second is the class of the activity to launch
         Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
         i.putExtra("mode", 2); // pass arbitrary data to launched activity
         startActivityForResult(i, REQUEST_CODE);
@@ -149,7 +145,7 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // REQUEST_CODE is defined above
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-            // insert tweet into the ArrayList
+            // Insert tweet into the ArrayList
             Tweet newTweet = (Tweet) Parcels.unwrap(data.getParcelableExtra("tweet"));
             tweets.add(0, newTweet);
             tweetAdapter.notifyItemInserted(0);
@@ -163,10 +159,9 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
-                // Remember to CLEAR OUT old items before appending in the new ones
                 tweetAdapter.clear();
 
-                // ...the data has come back, add new items to your adapter...
+                // Add new items to adapter
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
@@ -178,7 +173,7 @@ public class TimelineActivity extends AppCompatActivity {
                 }
 
                 tweetAdapter.addAll(tweets);
-                // Now we call setRefreshing(false) to signal refresh has finished
+                // Signal refresh has finished
                 swipeContainer.setRefreshing(false);
 
                 hideProgressBar();
@@ -209,4 +204,5 @@ public class TimelineActivity extends AppCompatActivity {
     public void hideProgressBar() {
         miActionProgressItem.setVisible(false);
     }
+
 }
