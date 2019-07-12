@@ -70,6 +70,7 @@
         android:layout_height="22dp"
         android:layout_below="@+id/tvBody"
         android:layout_marginTop="5dp"
+        android:onClick="onReplyBtnClick"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
         app:layout_constraintTop_toBottomOf="@+id/tvBody"
         app:srcCompat="@drawable/ic_svg_reply_icon" />
@@ -79,6 +80,7 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_marginTop="5dp"
+        android:onClick="onRetweetBtnClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.377"
@@ -92,6 +94,7 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_marginTop="5dp"
+        android:onClick="onLikeBtnClick"
         app:layout_constraintEnd_toEndOf="@+id/tvBody"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toEndOf="@+id/ivRetweetIcon"
